@@ -31,25 +31,69 @@ function loco(){
   loco()
   
 
-// page1
-let tl = gsap.timeline({
-  scrollTrigger :{
-    trigger:'.page1',
-    scroller : 'main',
-    start:'115% 97%',
-    end:'-50% top',
+
+// custom cursor
+let cursor = document.querySelector('#cursor')
+let main = document.querySelector('main')
+
+main.addEventListener("mousemove",function(e){
+  cursor.style.left = `${e.x+30}px`
+  cursor.style.top = `${e.y}px`
+})  
+
+// -------- page2 ----------
+gsap.to(".container ",{
+  scrollTrigger:{
+    trigger:'.page2',
+    scroller:'main',
+    start:'top 60%',
+    end:'bottom top',
     // markers:true,
-    scrub:1
+    scrub:4
   },
-})
-tl.from('.page1 .girl',{
-  y:50,
-  opacity:0,
-})
-tl.from('.page1 .boy2',{
-  y:50,
-  opacity:0
+  // transformorigin: "0 -200%"
+  rotate:'-7deg'
+
 })
 
 
 
+// pages animations from 3 to 5
+gsap.to('.page3',{
+  scrollTrigger:{
+    trigger:'.v-container3',
+    scroller:'main',
+    start:'top 19%',
+    end:'200% top',
+    // markers:true,
+    scrub:3,
+    pin:true
+  },
+  rotate: "2deg"
+
+})
+gsap.to('.page4',{
+  scrollTrigger:{
+    trigger:'.v-container4',
+    scroller:'main',
+    start:'top 20%',
+    end:'100% top',
+    // markers:true,
+    scrub:3,
+    pin:true
+  },
+  rotate: "-2deg",
+})
+
+gsap.to('.page5',{
+  scrollTrigger:{
+    trigger:'.v-container5',
+    scroller:'main',
+    start:'top 15%',
+    end:'top 30%',
+    // markers:true,
+    scrub:3,
+    pin:true
+  },
+  rotate: '3deg'
+})
